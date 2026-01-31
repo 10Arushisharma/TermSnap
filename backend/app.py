@@ -5,6 +5,13 @@ from summarizer import summarize_terms
 app = Flask(__name__)
 
 CORS(app, resources={r"/*": {"origins": "*"}})
+@app.route("/")
+def home():
+    return {
+        "message": "Term Snapper API is live 🚀",
+        "endpoint": "/summarize",
+        "method": "POST"
+    }
 
 @app.route("/summarize", methods=["POST", "OPTIONS"])
 def summarize():
